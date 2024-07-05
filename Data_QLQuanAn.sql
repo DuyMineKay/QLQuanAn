@@ -535,3 +535,4 @@ BEGIN
 		AND t.id = b.idTable
 END
 GO
+

@@ -70,27 +70,10 @@ namespace QLQuanAn.DAO
 
         public bool DeleteCategory(int idCategory)
         {
-            int result = 0;
-            ////xóa BillInfo => xóa Food => Category 
-            //List<string> IDFood = new List<string>();
+            FoodDAO.Instance.DeleteFoodByIDCategory(idCategory);
 
-            //IDFood.Add(string.Format("SELECT f.id FROM dbo.Food AS f, dbo.FoodCategory fc WHERE f.idCategory = fc.id AND idCategory = {0}", idCategory));
-
-            //if (IDFood.Count > 0)
-            //{
-            //    string[] temp = new string[IDFood.Count];
-
-
-            //    for (int i = 0; i <= temp.Length; i++)
-            //    {
-            //        if (FoodDAO.Instance.DeleteFood(Convert.ToInt32(temp[i])))
-            //        {
-            //            string query = string.Format("DELETE dbo.FoodCategory WHERE id = {0}", idCategory);
-            //            result = DataProvider.Instance.ExcuteNonQuery(query);
-            //        }
-            //    }
-            //}
-
+            string query = string.Format("DELETE FoodCategory WHERE id = {0}", idCategory);
+            int result = DataProvider.Instance.ExcuteNonQuery(query);
 
             return result > 0;
         }

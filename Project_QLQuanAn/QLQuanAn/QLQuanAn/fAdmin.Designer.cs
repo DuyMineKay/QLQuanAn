@@ -122,8 +122,8 @@ namespace QLQuanAn
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.tpReport = new System.Windows.Forms.TabPage();
-            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rpViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -595,9 +595,9 @@ namespace QLQuanAn
             // 
             // txbNameCategory
             // 
-            this.txbNameCategory.Location = new System.Drawing.Point(114, 9);
+            this.txbNameCategory.Location = new System.Drawing.Point(126, 13);
             this.txbNameCategory.Name = "txbNameCategory";
-            this.txbNameCategory.Size = new System.Drawing.Size(168, 20);
+            this.txbNameCategory.Size = new System.Drawing.Size(155, 20);
             this.txbNameCategory.TabIndex = 1;
             this.txbNameCategory.TextChanged += new System.EventHandler(this.txbNameCategory_TextChanged);
             // 
@@ -622,10 +622,10 @@ namespace QLQuanAn
             // 
             // txbCategoryID
             // 
-            this.txbCategoryID.Location = new System.Drawing.Point(114, 9);
+            this.txbCategoryID.Location = new System.Drawing.Point(126, 9);
             this.txbCategoryID.Name = "txbCategoryID";
             this.txbCategoryID.ReadOnly = true;
-            this.txbCategoryID.Size = new System.Drawing.Size(168, 20);
+            this.txbCategoryID.Size = new System.Drawing.Size(156, 20);
             this.txbCategoryID.TabIndex = 1;
             this.txbCategoryID.TextChanged += new System.EventHandler(this.txbCategoryID_TextChanged);
             // 
@@ -672,7 +672,6 @@ namespace QLQuanAn
             // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Enabled = false;
             this.btnDeleteCategory.Location = new System.Drawing.Point(76, 3);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(64, 34);
@@ -848,7 +847,6 @@ namespace QLQuanAn
             // 
             // btnDeleteTable
             // 
-            this.btnDeleteTable.Enabled = false;
             this.btnDeleteTable.Location = new System.Drawing.Point(76, 3);
             this.btnDeleteTable.Name = "btnDeleteTable";
             this.btnDeleteTable.Size = new System.Drawing.Size(64, 34);
@@ -1070,11 +1068,6 @@ namespace QLQuanAn
             this.tpReport.Text = "Report";
             this.tpReport.UseVisualStyleBackColor = true;
             // 
-            // tableBindingSource
-            // 
-            this.tableBindingSource.DataSource = typeof(QLQuanAn.DTO.Table);
-            this.tableBindingSource.CurrentChanged += new System.EventHandler(this.tableBindingSource_CurrentChanged);
-            // 
             // rpViewer
             // 
             this.rpViewer.LocalReport.ReportEmbeddedResource = "QLQuanAn.Report1.rdlc";
@@ -1085,6 +1078,11 @@ namespace QLQuanAn
             this.rpViewer.TabIndex = 0;
             this.rpViewer.Load += new System.EventHandler(this.rpViewer_Load);
             // 
+            // tableBindingSource
+            // 
+            this.tableBindingSource.DataSource = typeof(QLQuanAn.DTO.Table);
+            this.tableBindingSource.CurrentChanged += new System.EventHandler(this.tableBindingSource_CurrentChanged);
+            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1094,7 +1092,6 @@ namespace QLQuanAn
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
-            //this.Load += new System.EventHandler(this.fAdmin_Load);
             this.tcAdmin.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
             this.tpBill.PerformLayout();

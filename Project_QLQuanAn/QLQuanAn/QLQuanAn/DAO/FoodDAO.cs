@@ -93,5 +93,16 @@ namespace QLQuanAn.DAO
             return result > 0;
         }
 
+        public void DeleteFoodByIDCategory(int idCategory)
+        {
+            string query1 = string.Format("DELETE BillInfo WHERE idFood IN (SELECT id FROM dbo.Food WHERE idCategory = {0})", idCategory);
+            DataProvider.Instance.ExcuteQuery(query1);
+
+            string query2 = string.Format("DELETE dbo.Bill WHERE id IN (SELECT idBill FROM dbo.BillInfo WHERE idFood IN (SELECT id FROM dbo.Food WHERE idCategory = {0}))", idCategory);
+            DataProvider.Instance.ExcuteQuery(query2);
+
+            string query = string.Format("DELETE Food WHERE idCategory = {0}", idCategory);
+            DataProvider.Instance.ExcuteQuery(query);
+        }
     }
 }

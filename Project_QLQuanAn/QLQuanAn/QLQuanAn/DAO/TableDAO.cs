@@ -55,9 +55,12 @@ namespace QLQuanAn.DAO
             return result > 0;
         }
 
-        public bool DeleteTable(int idFood)
+        public bool DeleteTable(int idTableFood)
         {
-            int result = 0;
+            BillDAO.Instance.DeleteBillByIDTable(idTableFood);
+
+            string query = string.Format("DELETE TableFood WHERE id = {0}", idTableFood);
+            int result = DataProvider.Instance.ExcuteNonQuery(query);
 
             return result > 0;
         }

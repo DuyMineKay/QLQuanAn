@@ -165,11 +165,12 @@ namespace QLQuanAn
 
             f.InsertTableFood += f_InsertTableFood;
             f.UpdateTableFood += f_UpdateTableFood;
-            f.DeleteTableFoody += f_DeleteTableFoody;
+            f.DeleteTableFood += f_DeleteTableFood;
+
             f.ShowDialog();
         }
 
-        private void f_DeleteTableFoody(object sender, EventArgs e)
+        private void f_DeleteTableFood(object sender, EventArgs e)
         {
             LoadTable();
             if (lsvBill.Tag != null)

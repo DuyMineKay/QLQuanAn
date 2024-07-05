@@ -379,7 +379,7 @@ namespace QLQuanAn
             if (CategoryDAO.Instance.DeleteCategory(id))
             {
                 MessageBox.Show("Xóa danh mục thức ăn thành công!");
-                LoadListFood();
+                LoadListCategory();
                 if (deleteFood != null)
                     deleteFood(this, new EventArgs());
             }
@@ -459,7 +459,19 @@ namespace QLQuanAn
         }
         private void btnDeleteTable_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt32(txbTableID.Text);
 
+            if (TableDAO.Instance.DeleteTable(id))
+            {
+                MessageBox.Show("Xóa bàn thành công!");
+                LoadListTable();
+                if (deleteTableFood != null)
+                    deleteTableFood(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi xóa bàn!");
+            }
         }
 
 
@@ -472,11 +484,11 @@ namespace QLQuanAn
             remove { insertTableFood -= value; }
 
         }
-        private event EventHandler deleteTableFoody;
-        public event EventHandler DeleteTableFoody
+        private event EventHandler deleteTableFood;
+        public event EventHandler DeleteTableFood
         {
-            add { deleteTableFoody += value; }
-            remove { deleteTableFoody -= value; }
+            add { deleteTableFood += value; }
+            remove { deleteTableFood -= value; }
         }
 
         private event EventHandler updateTableFood;

@@ -68,6 +68,15 @@ namespace QLQuanAn.DAO
                 return 1;
             }
         }
+
+        public void DeleteBillByIDTable(int idTable)
+        {
+            string query1 = string.Format("DELETE BillInfo WHERE idBill IN (SELECT id FROM dbo.Bill WHERE idTable = {0})", idTable);
+            DataProvider.Instance.ExcuteQuery(query1);
+
+            string query2 = string.Format("DELETE Bill WHERE idTable = {0}", idTable);
+            DataProvider.Instance.ExcuteQuery(query2);
+        }
     }
 }
 
