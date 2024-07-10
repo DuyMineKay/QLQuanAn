@@ -345,6 +345,7 @@ namespace QLQuanAn
             {
                 MessageBox.Show("Thêm danh mục thức ăn thành công!");
                 LoadListCategory();
+                LoadListFood();
                 if (insertCategory != null)
                     insertCategory(this, new EventArgs());
             }
@@ -363,6 +364,7 @@ namespace QLQuanAn
             {
                 MessageBox.Show("Sửa danh mục thức ăn thành công!");
                 LoadListCategory();
+                LoadListFood();
                 if (updateCategory != null)
                     updateCategory(this, new EventArgs());
             }
@@ -380,6 +382,7 @@ namespace QLQuanAn
             {
                 MessageBox.Show("Xóa danh mục thức ăn thành công!");
                 LoadListCategory();
+                LoadListFood();
                 if (deleteFood != null)
                     deleteFood(this, new EventArgs());
             }
@@ -430,6 +433,8 @@ namespace QLQuanAn
             {
                 MessageBox.Show("Thêm bàn thành công!");
                 LoadListTable();
+                LoadListCategory();
+                LoadListFood();
                 if (updateTableFood != null)
                     updateTableFood(this, new EventArgs());
             }
@@ -449,6 +454,8 @@ namespace QLQuanAn
             {
                 MessageBox.Show("Sửa bàn thành công!");
                 LoadListTable();
+                LoadListCategory();
+                LoadListFood();
                 if (updateTableFood != null)
                     updateTableFood(this, new EventArgs());
             }
@@ -465,6 +472,8 @@ namespace QLQuanAn
             {
                 MessageBox.Show("Xóa bàn thành công!");
                 LoadListTable();
+                LoadListCategory();
+                LoadListFood();
                 if (deleteTableFood != null)
                     deleteTableFood(this, new EventArgs());
             }
@@ -662,16 +671,16 @@ namespace QLQuanAn
 
         #endregion
 
-        private void fAdmin_Load(object sender, EventArgs e)
-        {
+        //private void fAdmin_Load(object sender, EventArgs e)
+        //{
 
-            this.rpViewer.RefreshReport();
-            this.rpViewer.RefreshReport();
-        }
+        //    this.rpViewer.RefreshReport();
+        //    this.rpViewer.RefreshReport();
+        //}
 
-        private void rpViewer_Load(object sender, EventArgs e)
-        {
-            this.rpViewer.RefreshReport();
-        }
+        //private void rpViewer_Load(object sender, EventArgs e)
+        //{
+        //    this.rpViewer.RefreshReport();
+        //}
     }
 }

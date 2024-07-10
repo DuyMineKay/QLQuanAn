@@ -536,3 +536,17 @@ BEGIN
 END
 GO
 
+SELECT MAX(id) FROM dbo.BillInfo
+SELECT MAX(id) FROM dbo.Bill
+
+CREATE PROC USP_ReportBill
+@idBill INT
+AS
+BEGIN
+    SELECT b.id, tbf.name, b.DateCheckIn, b.DateCheckOut, f.name, f.price, bi.count, b.discount, b.totalPrice
+	FROM dbo.Bill AS b ,dbo.BillInfo AS bi, dbo.Food AS f, dbo.TableFood AS tbf
+	WHERE @idBill = b.id AND b.id = bi.idBill AND b.idTable = tbf.id AND bi.idFood = f.id
+END
+GO
+
+EXEC USP_ReportBill 5

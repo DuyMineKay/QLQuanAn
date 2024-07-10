@@ -121,8 +121,6 @@ namespace QLQuanAn
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.tpReport = new System.Windows.Forms.TabPage();
-            this.rpViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
@@ -164,7 +162,6 @@ namespace QLQuanAn
             this.panel25.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel22.SuspendLayout();
-            this.tpReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,7 +172,6 @@ namespace QLQuanAn
             this.tcAdmin.Controls.Add(this.tpCategory);
             this.tcAdmin.Controls.Add(this.tpTable);
             this.tcAdmin.Controls.Add(this.tpAccount);
-            this.tcAdmin.Controls.Add(this.tpReport);
             this.tcAdmin.Location = new System.Drawing.Point(10, 10);
             this.tcAdmin.Name = "tcAdmin";
             this.tcAdmin.SelectedIndex = 0;
@@ -1057,27 +1053,6 @@ namespace QLQuanAn
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
-            // tpReport
-            // 
-            this.tpReport.Controls.Add(this.rpViewer);
-            this.tpReport.Location = new System.Drawing.Point(4, 22);
-            this.tpReport.Name = "tpReport";
-            this.tpReport.Padding = new System.Windows.Forms.Padding(3);
-            this.tpReport.Size = new System.Drawing.Size(697, 439);
-            this.tpReport.TabIndex = 5;
-            this.tpReport.Text = "Report";
-            this.tpReport.UseVisualStyleBackColor = true;
-            // 
-            // rpViewer
-            // 
-            this.rpViewer.LocalReport.ReportEmbeddedResource = "QLQuanAn.Report1.rdlc";
-            this.rpViewer.Location = new System.Drawing.Point(6, 3);
-            this.rpViewer.Name = "rpViewer";
-            this.rpViewer.ServerReport.BearerToken = null;
-            this.rpViewer.Size = new System.Drawing.Size(691, 436);
-            this.rpViewer.TabIndex = 0;
-            this.rpViewer.Load += new System.EventHandler(this.rpViewer_Load);
-            // 
             // tableBindingSource
             // 
             this.tableBindingSource.DataSource = typeof(QLQuanAn.DTO.Table);
@@ -1146,7 +1121,6 @@ namespace QLQuanAn
             this.panel26.ResumeLayout(false);
             this.panel26.PerformLayout();
             this.panel22.ResumeLayout(false);
-            this.tpReport.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -1245,7 +1219,5 @@ namespace QLQuanAn
         private Button btnPrevioursBillPage;
         private Button btnLastBillPage;
         private Button btnFirstBillPage;
-        private TabPage tpReport;
-        private Microsoft.Reporting.WinForms.ReportViewer rpViewer;
     }
 }
