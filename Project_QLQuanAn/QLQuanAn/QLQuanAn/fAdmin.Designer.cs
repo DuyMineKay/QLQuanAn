@@ -122,6 +122,11 @@ namespace QLQuanAn
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tpReport = new System.Windows.Forms.TabPage();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nmIDBill = new System.Windows.Forms.NumericUpDown();
+            this.rpvBill = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -163,6 +168,8 @@ namespace QLQuanAn
             this.panel26.SuspendLayout();
             this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
+            this.tpReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmIDBill)).BeginInit();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -172,6 +179,7 @@ namespace QLQuanAn
             this.tcAdmin.Controls.Add(this.tpCategory);
             this.tcAdmin.Controls.Add(this.tpTable);
             this.tcAdmin.Controls.Add(this.tpAccount);
+            this.tcAdmin.Controls.Add(this.tpReport);
             this.tcAdmin.Location = new System.Drawing.Point(10, 10);
             this.tcAdmin.Name = "tcAdmin";
             this.tcAdmin.SelectedIndex = 0;
@@ -1058,6 +1066,57 @@ namespace QLQuanAn
             this.tableBindingSource.DataSource = typeof(QLQuanAn.DTO.Table);
             this.tableBindingSource.CurrentChanged += new System.EventHandler(this.tableBindingSource_CurrentChanged);
             // 
+            // tpReport
+            // 
+            this.tpReport.Controls.Add(this.rpvBill);
+            this.tpReport.Controls.Add(this.nmIDBill);
+            this.tpReport.Controls.Add(this.textBox1);
+            this.tpReport.Controls.Add(this.btnReport);
+            this.tpReport.Location = new System.Drawing.Point(4, 22);
+            this.tpReport.Name = "tpReport";
+            this.tpReport.Padding = new System.Windows.Forms.Padding(3);
+            this.tpReport.Size = new System.Drawing.Size(697, 439);
+            this.tpReport.TabIndex = 5;
+            this.tpReport.Text = "Report";
+            this.tpReport.UseVisualStyleBackColor = true;
+            // 
+            // btnReport
+            // 
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(419, 10);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(123, 30);
+            this.btnReport.TabIndex = 0;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(133, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(189, 29);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "Nhập mã hóa đơn";
+            // 
+            // nmIDBill
+            // 
+            this.nmIDBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nmIDBill.Location = new System.Drawing.Point(328, 10);
+            this.nmIDBill.Name = "nmIDBill";
+            this.nmIDBill.Size = new System.Drawing.Size(85, 29);
+            this.nmIDBill.TabIndex = 2;
+            this.nmIDBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rpvBill
+            // 
+            this.rpvBill.Location = new System.Drawing.Point(6, 44);
+            this.rpvBill.Name = "rpvBill";
+            this.rpvBill.ServerReport.BearerToken = null;
+            this.rpvBill.Size = new System.Drawing.Size(685, 392);
+            this.rpvBill.TabIndex = 3;
+            // 
             // fAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1067,6 +1126,7 @@ namespace QLQuanAn
             this.Name = "fAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
+            //this.Load += new System.EventHandler(this.fAdmin_Load);
             this.tcAdmin.ResumeLayout(false);
             this.tpBill.ResumeLayout(false);
             this.tpBill.PerformLayout();
@@ -1122,6 +1182,9 @@ namespace QLQuanAn
             this.panel26.PerformLayout();
             this.panel22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
+            this.tpReport.ResumeLayout(false);
+            this.tpReport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmIDBill)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1219,5 +1282,10 @@ namespace QLQuanAn
         private Button btnPrevioursBillPage;
         private Button btnLastBillPage;
         private Button btnFirstBillPage;
+        private TabPage tpReport;
+        private NumericUpDown nmIDBill;
+        private TextBox textBox1;
+        private Button btnReport;
+        private Microsoft.Reporting.WinForms.ReportViewer rpvBill;
     }
 }

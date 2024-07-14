@@ -549,4 +549,28 @@ BEGIN
 END
 GO
 
-EXEC USP_ReportBill 5
+CREATE PROC USP_GetReportBillByID
+@idBill INT
+AS
+BEGIN
+	SELECT id, DateCheckIn, DateCheckOut, discount, totalPrice FROM dbo.Bill WHERE id = @idBill
+END
+GO
+
+CREATE PROC USP_GetReportTableFoodByIDBilll
+@idBill INT
+AS
+BEGIN
+	SELECT name FROM dbo.TableFood WHERE id = (SELECT idTable FROM dbo.Bill WHERE id = @idBill)
+END
+GO
+
+CREATE PROC USP_GetReportFoodByIDBill
+@idBill INT
+AS
+BEGIN
+	SELECT f.name, f.price, bi.count 
+	FROM dbo.Food AS f, dbo.BillInfo AS bi 
+	WHERE bi.idBill = 5 AND bi.idFood = f.id AND f.id IN (SELECT idFood FROM dbo.BillInfo WHERE idBill = @idBill)
+END
+GO

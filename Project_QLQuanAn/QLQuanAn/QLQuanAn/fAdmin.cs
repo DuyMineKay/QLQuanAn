@@ -1,7 +1,9 @@
-﻿using QLQuanAn.DAO;
+﻿using Microsoft.Reporting.WinForms;
+using QLQuanAn.DAO;
 using QLQuanAn.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace QLQuanAn
@@ -56,6 +58,8 @@ namespace QLQuanAn
             LoadListTable();
             AddTableBinding();
             AddAccountBinding();
+            rpvBill.Visible = false;
+            LoadRP();
         }
 
         void AddAccountBinding()
@@ -513,10 +517,6 @@ namespace QLQuanAn
         {
             LoadAccount();
         }
-        #endregion
-
-        #endregion
-
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
             string userName = txbUserName.Text;
@@ -548,6 +548,9 @@ namespace QLQuanAn
             ResetPass(userName);
         }
 
+        #endregion
+
+        #region Thống kê 
         private void btnFirstBillPage_Click(object sender, EventArgs e)
         {
             txbIndexPageBill.Text = "1";
@@ -587,6 +590,10 @@ namespace QLQuanAn
                 page++;
             txbIndexPageBill.Text = page.ToString();
         }
+        #endregion
+
+        #endregion
+
         #region event linh tinh
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -668,19 +675,68 @@ namespace QLQuanAn
 
         }
 
+        private void fAdmin_Load(object sender, EventArgs e)
+        {
+
+            this.rpvBill.RefreshReport();
+        }
+
+
 
         #endregion
 
-        //private void fAdmin_Load(object sender, EventArgs e)
-        //{
+        void LoadRP()
+        {
+            int max = BillDAO.Instance.GetmaxIDBill();
+            nmIDBill.Maximum = max;
 
-        //    this.rpViewer.RefreshReport();
-        //    this.rpViewer.RefreshReport();
-        //}
+        }
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            int maxIDBill = BillDAO.Instance.GetmaxIDBill();
+            string idbill = nmIDBill.Value.ToString();
+            if (Convert.ToInt32(idbill) <= maxIDBill)
+            {
+                this.rpvBill.LocalReport.DataSources.Clear();
+                rpvBill.Visible = true;
+                ReportDataSource bill = new ReportDataSource("DataSetBill", rpBill(idbill));
+                ReportDataSource tbname = new ReportDataSource("DataSetTableFood", rpTableFood(idbill));
+                ReportDataSource food = new ReportDataSource("DataSetFood", rpFood(idbill));
+                rpvBill.LocalReport.ReportPath = "ReportBill.rdlc";
+                this.rpvBill.LocalReport.DataSources.Add(bill);
+                this.rpvBill.LocalReport.DataSources.Add(tbname);
+                this.rpvBill.LocalReport.DataSources.Add(food);
+                this.rpvBill.LocalReport.Refresh();
+                this.rpvBill.RefreshReport();
+                LoadRP();
+            }
+            else
+            {
+                MessageBox.Show("Số hóa đơn chưa tồn tại! \nVui lòng nhập số hóa đơn nhỏ hơn hoặc bảng " + maxIDBill);
+            }
 
-        //private void rpViewer_Load(object sender, EventArgs e)
-        //{
-        //    this.rpViewer.RefreshReport();
-        //}
+        }
+        private DataTable rpBill(string idbill)
+        {
+            DataTable dt = new DataTable();
+            string query = string.Format("SELECT id, DateCheckIn, DateCheckOut, idTable, discount, totalPrice FROM dbo.Bill WHERE id = {0}", idbill);
+            dt = DataProvider.Instance.ExcuteQuery(query);
+            return dt;
+        }
+        private DataTable rpTableFood(string idbill)
+        {
+            DataTable dt = new DataTable();
+            string query = string.Format("SELECT name FROM dbo.TableFood WHERE id = (SELECT idTable FROM dbo.Bill WHERE id = {0})", idbill);
+            dt = DataProvider.Instance.ExcuteQuery(query);
+            return dt;
+        }
+        private DataTable rpFood(string idbill)
+        {
+            DataTable dt = new DataTable();
+            string query = string.Format("EXEC USP_GetReportFoodByIDBill {0}", idbill);
+            dt = DataProvider.Instance.ExcuteQuery(query);
+            return dt;
+        }
+
     }
 }
